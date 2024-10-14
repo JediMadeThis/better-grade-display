@@ -27,8 +27,36 @@ td {
   padding: 5px 10px;
 }
 
-td:not(.header, .subjNameHeader) {
+td:not(.header, .subjNameHeader),
+input {
   font-size: 18px;
+}
+
+input {
+  color: #cc8888;
+}
+
+.inputTd {
+  background-color: #ffffff;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input {
+  border: none;
+  padding: 0;
+  height: 30px;
+  width: 100%;
+  text-align: center;
+  background-color: transparent;
+}
+
+.input:focus {
+  outline: none;
 }
 
 .header {
@@ -49,8 +77,20 @@ td:not(.header, .subjNameHeader) {
   padding-right: 75px;
 }
 
-.importBtn {
+.resultHeader {
+  width: 80px;
+}
+
+.resultCode {
   display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 30%;
+  outline: none;
+}
+
+.btn {
+  display: inline-block;
   background-color: #ffcccc95;
   margin: 0 auto;
   border: none;
@@ -58,29 +98,15 @@ td:not(.header, .subjNameHeader) {
   padding: 10px 15px;
 }
 
-.importBtn:active {
+.btn:active {
   background-color: #ffcccc60;
 }
 
-.importInput {
-  display: none;
-}
-
-.importDiv {
-  margin-top: 25px;
-}
-
-.importDiv p {
+.resultJson {
+  margin-top: 15px;
   text-align: center;
-  font-size: 12px;
 }
 
-.result {
-  background-color: #ffffff;
-  font-weight: 600;
-}
-
-.downloadSample,
-.downloadSample:visited {
-  color: black;
+h1 {
+  text-align: center;
 }

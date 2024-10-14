@@ -1,0 +1,90 @@
+{
+  "scores": [
+    {
+      "subjectNo": 1,
+      "subject": "Thai",
+      "score": [26, 15, 15]
+    },
+    {
+      "subjectNo": 2,
+      "subject": "Maths",
+      "score": [26, 18, 25]
+    },
+    {
+      "subjectNo": 3,
+      "subject": "Science",
+      "score": [19, 13, 31]
+    },
+    {
+      "subjectNo": 4,
+      "subject": "Computer",
+      "score": [28, 19, 29]
+    },
+    {
+      "subjectNo": 5,
+      "subject": "Social Studies",
+      "score": [24, 15, 29]
+    },
+    {
+      "subjectNo": 6,
+      "subject": "History",
+      "score": [27, 14, 26]
+    },
+    {
+      "subjectNo": 7,
+      "subject": "Buddhism",
+      "score": [30, 12, 28]
+    },
+    {
+      "subjectNo": 8,
+      "subject": "H.E.",
+
+      "score": [28, 14, 27]
+    },
+    {
+      "subjectNo": 9,
+      "subject": "P.E.",
+      "score": [28, 20, 27]
+    },
+    {
+      "subjectNo": 10,
+      "subject": "Music",
+      "score": [30, 16, 30]
+    },
+    {
+      "subjectNo": 11,
+      "subject": "Dance",
+      "score": [38, 16, 19]
+    },
+    {
+      "subjectNo": 12,
+      "subject": "Work",
+      "score": [33, null, 39]
+    },
+    {
+      "subjectNo": 13,
+      "subject": "English",
+      "score": [26, 16, 28]
+    },
+    {
+      "subjectNo": 14,
+      "subject": "Additional Science",
+      "score": [32, 13, 24]
+    },
+    {
+      "subjectNo": 15,
+      "subject": "Japanese/Chinese",
+      "score": [29, 19, 30]
+    },
+    {
+      "subjectNo": 16,
+      "subject": "English Read-Write",
+      "score": [25, 16, 28]
+    },
+    {
+      "subjectNo": 17,
+      "subject": "English Writing",
+      "score": [30, 16, 11]
+    }
+  ]
+}

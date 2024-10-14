@@ -1,26 +1,245 @@
 let scoreElements = {};
+let tillGradeElements = {};
+
+let subjects = {
+  main: [
+    {
+      subjectNo: 1,
+      subject: 'Thai',
+      credit: '1.5',
+      fullScore: [30, 20, 30],
+    },
+    {
+      subjectNo: 2,
+      subject: 'Maths',
+      credit: '2.5',
+      fullScore: [30, 20, 30],
+    },
+    {
+      subjectNo: 3,
+      subject: 'Science',
+      credit: '1.5',
+      fullScore: [25, 20, 35],
+    },
+    {
+      subjectNo: 4,
+      subject: 'Computer',
+      credit: '0.5',
+      fullScore: [30, 20, 30],
+    },
+    {
+      subjectNo: 5,
+      subject: 'Social Studies',
+      credit: '1.0',
+      fullScore: [30, 20, 30],
+    },
+    {
+      subjectNo: 6,
+      subject: 'History',
+      credit: '0.5',
+      fullScore: [30, 20, 30],
+    },
+    {
+      subjectNo: 7,
+      subject: 'Buddhism',
+      credit: '0.5',
+      fullScore: [30, 20, 30],
+    },
+    {
+      subjectNo: 8,
+      subject: 'H.E.',
+      credit: '0.5',
+      fullScore: [30, 20, 30],
+    },
+    {
+      subjectNo: 9,
+      subject: 'P.E.',
+      credit: '0.5',
+      fullScore: [30, 20, 30],
+    },
+    {
+      subjectNo: 10,
+      subject: 'Music',
+      credit: '0.5',
+      fullScore: [30, 20, 30],
+    },
+    {
+      subjectNo: 11,
+      subject: 'Dance',
+      credit: '0.5',
+      fullScore: [40, 20, 20],
+    },
+    {
+      subjectNo: 12,
+      subject: 'Work',
+      credit: '1.0',
+      fullScore: [40, '', 40],
+    },
+    {
+      subjectNo: 13,
+      subject: 'English',
+      credit: '1.5',
+      fullScore: [30, 20, 30],
+    },
+  ],
+  additional: [
+    {
+      subjectNo: 14,
+      subject: 'Additional Science',
+      credit: '1.0',
+      fullScore: [35, 20, 25],
+    },
+    {
+      subjectNo: 15,
+      subject: 'Japanese/Chinese',
+      credit: '0.5',
+      fullScore: [30, 20, 30],
+    },
+    {
+      subjectNo: 16,
+      subject: 'English Read-Write',
+      credit: '1.0',
+      fullScore: [30, 20, 30],
+    },
+    {
+      subjectNo: 17,
+      subject: 'English Writing',
+      credit: '0.5',
+      fullScore: [30, 20, 30],
+    },
+  ],
+};
+
+const tbody = document.getElementById('tbody');
+
+function generateTable() {
+  const mainSubjectsHeader = createSubjectHeader('Main Subjects');
+  tbody.appendChild(mainSubjectsHeader);
+
+  Object.entries(subjects.main).forEach((subject) => {
+    let tr = createSubjectTr(subject);
+    tbody.appendChild(tr);
+  });
+
+  const additionalSubjectsHeader = createSubjectHeader('Additional Subjects');
+  tbody.appendChild(additionalSubjectsHeader);
+
+  Object.entries(subjects.additional).forEach((subject) => {
+    let tr = createSubjectTr(subject);
+    tbody.appendChild(tr);
+  });
+}
+
+generateTable();
 
 document.querySelectorAll('td').forEach((td) => {
   if (!td.id) return;
 
-  if (startsWiths(td.id.toLowerCase(), 'premid', 'mid', 'postmid', 'final')) {
+  if (startsWiths(td.id.toLowerCase(), 'premid', 'mid', 'postmid')) {
     scoreElements[td.id] = td;
+  } else if (startsWiths(td.id.toLowerCase(), 'tillgrade')) {
+    tillGradeElements[td.id] = td;
   }
 });
 
-Object.entries(scoreElements).forEach((element) => {
-  if (
-    startsWiths(
-      element[0].toLowerCase(),
-      'premidresult',
-      'midresult',
-      'postmidresult',
-      'finalresult'
+function createSubjectTr(subjectObject) {
+  const tr = document.createElement('tr');
+
+  const tdSubjName = document.createElement('td');
+  const tdSubjNameText = document.createTextNode(subjectObject[1].subject);
+  tdSubjName.appendChild(tdSubjNameText);
+  tdSubjName.classList.add('subjName');
+
+  const tdCredit = document.createElement('td');
+  const tdCreditText = document.createTextNode(subjectObject[1].credit);
+  tdCredit.appendChild(tdCreditText);
+
+  const tdPreMidFull = document.createElement('td');
+  const tdPreMidFullText = document.createTextNode(
+    subjectObject[1].fullScore[0]
+  );
+  tdPreMidFull.appendChild(tdPreMidFullText);
+  tdPreMidFull.id = `preMidFull${subjectObject[1].subjectNo}`;
+
+  const tdMidFull = document.createElement('td');
+  const tdMidFullText = document.createTextNode(subjectObject[1].fullScore[1]);
+  tdMidFull.appendChild(tdMidFullText);
+  tdMidFull.id = `midFull${subjectObject[1].subjectNo}`;
+
+  const tdPostMidFull = document.createElement('td');
+  const tdPostMidFullText = document.createTextNode(
+    subjectObject[1].fullScore[2]
+  );
+
+  tdPostMidFull.appendChild(tdPostMidFullText);
+  tdPostMidFull.id = `postMidFull${subjectObject[1].subjectNo}`;
+
+  const tdPreMidResult = document.createElement('td');
+  tdPreMidResult.id = `preMidResult${subjectObject[1].subjectNo}`;
+  tdPreMidResult.classList.add('result');
+
+  const tdMidResult = document.createElement('td');
+  tdMidResult.id = `midResult${subjectObject[1].subjectNo}`;
+  tdMidResult.classList.add('result');
+
+  const tdPostMidResult = document.createElement('td');
+  tdPostMidResult.id = `postMidResult${subjectObject[1].subjectNo}`;
+  tdPostMidResult.classList.add('result');
+
+  const tdTillGrade = document.createElement('td');
+  tdTillGrade.id = `tillGrade${subjectObject[1].subjectNo}`;
+
+  tr.appendChild(tdSubjName);
+  tr.appendChild(tdCredit);
+
+  tr.appendChild(tdPreMidFull);
+  tr.appendChild(tdPreMidResult);
+
+  tr.appendChild(tdMidFull);
+  tr.appendChild(tdMidResult);
+
+  tr.appendChild(tdPostMidFull);
+  tr.appendChild(tdPostMidResult);
+
+  tr.appendChild(tdTillGrade);
+
+  return tr;
+}
+
+function createSubjectHeader(text) {
+  const tr = document.createElement('tr');
+
+  const td = document.createElement('td');
+  const tdText = document.createTextNode(text);
+
+  td.setAttribute('colspan', '9');
+  td.classList.add('subjNameHeader');
+
+  td.appendChild(tdText);
+  tr.appendChild(td);
+
+  return tr;
+}
+
+function calculateTillGrade() {
+  Object.entries(tillGradeElements).forEach((element) => {
+    let elementNum = extractNum(element[0]);
+
+    if (
+      !scoreElements[`preMidResult${elementNum}`].textContent &&
+      !scoreElements[`midResult${elementNum}`].textContent &&
+      !scoreElements[`postMidResult${elementNum}`].textContent
     )
-  ) {
-    element[1].style.background = '#ffffff';
-  }
-});
+      return console.log('a');
+
+    let resultTotal =
+      Number(scoreElements[`preMidResult${elementNum}`].textContent) +
+      Number(scoreElements[`midResult${elementNum}`].textContent) +
+      Number(scoreElements[`postMidResult${elementNum}`].textContent);
+
+    tillGradeElements[`tillGrade${elementNum}`].textContent = 80 - resultTotal;
+  });
+}
 
 function updateColor() {
   Object.entries(scoreElements).forEach((element) => {
@@ -33,8 +252,6 @@ function updateColor() {
         scoreType = 'mid';
       } else if (element[0].toLowerCase().startsWith('postmid')) {
         scoreType = 'postMid';
-      } else if (element[0].toLowerCase().startsWith('final')) {
-        scoreType = 'final';
       }
 
       if (
@@ -44,42 +261,11 @@ function updateColor() {
         ) *
           0.6
       ) {
-        element[1].style.color = '#aa0000';
+        element[1].style.color = '#bb0000';
       } else {
         element[1].style.color = '#cc8888';
       }
     }
-  });
-}
-
-function setFullFinals() {
-  Object.entries(scoreElements).forEach((element) => {
-    if (
-      startsWiths(
-        element[0].toLowerCase(),
-        'premidfull',
-        'midfull',
-        'postmidfull'
-      )
-    ) {
-    }
-
-    let result = 0;
-    let elementNum = extractNum(element[0]);
-
-    console.log(
-      Number(scoreElements[`preMidFull${elementNum}`].textContent),
-      Number(scoreElements[`midFull${elementNum}`].textContent),
-      Number(scoreElements[`postMidFull${elementNum}`].textContent)
-    );
-
-    result =
-      100 -
-      Number(scoreElements[`preMidFull${elementNum}`].textContent) -
-      Number(scoreElements[`midFull${elementNum}`].textContent) -
-      Number(scoreElements[`postMidFull${elementNum}`].textContent);
-
-    scoreElements[`finalFull${elementNum}`].textContent = result;
   });
 }
 
@@ -97,5 +283,47 @@ function extractNum(str) {
   return Number(str.match(/\d+/));
 }
 
-setFullFinals();
 updateColor();
+
+//
+
+const importBtn = document.getElementById('importBtn');
+const importInput = document.getElementById('importInput');
+
+importBtn.addEventListener('click', () => {
+  importInput.click();
+});
+
+importInput.addEventListener('input', importScores);
+
+function importScores() {
+  let file = importInput.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+    reader.readAsText(file, 'UTF-8');
+
+    reader.onload = function (event) {
+      scores = JSON.parse(event.target.result).scores;
+
+      for (let i = 0; i < scores.length; i++) {
+        let subjNum = scores[i].subjectNo;
+        let score = scores[i].score;
+
+        scoreElements[`preMidResult${subjNum}`].textContent = score[0];
+        scoreElements[`midResult${subjNum}`].textContent = score[1];
+        scoreElements[`postMidResult${subjNum}`].textContent = score[2];
+      }
+
+      calculateTillGrade();
+      updateColor();
+    };
+
+    reader.onerror = function (event) {
+      err = event.target.error.message;
+
+      console.error(err);
+      alert(err);
+    };
+  }
+}
