@@ -1,0 +1,32 @@
+body {
+  background-color: #ffcccc65;
+  color: #000000;
+}
+
+table,
+th,
+td {
+  background-color: #ffffff60;
+  border: 2px solid #222222;
+}
+
+.subjNameHeader {
+  background-color: #ffbbbb50;
+}
+
+.importBtn {
+  background-color: #ffcccc95;
+}
+
+.importBtn:active {
+  background-color: #ffcccc60;
+}
+
+.result {
+  background-color: #ffffff;
+}
+
+.downloadSample,
+.downloadSample:visited {
+  color: black;
+}

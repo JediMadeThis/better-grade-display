@@ -1,0 +1,63 @@
+body {
+  background-color: #111111;
+  color: #ffffff;
+}
+
+table,
+th,
+td {
+  background-color: #222222;
+  border: 2px solid #fefefe;
+}
+
+.subjNameHeader {
+  background-color: #7349ac;
+}
+
+.subjNameHeader.addS {
+  background-color: #eb6123;
+}
+
+.mainBg td {
+  /* background-color: #9077b68c; */
+  background-color: #7349ac50;
+}
+
+.addBg td {
+  background-color: #eb612330;
+}
+
+.mainBg .full {
+  background-color: #7349ac80;
+}
+
+.mainBg .grade,
+.addBg .grade {
+  background-color: #50b84850;
+}
+
+.addBg .full {
+  background-color: #eb612380;
+}
+
+.mainBg .subjName {
+  background-color: #7349ac50;
+}
+
+.importBtn {
+  color: #ffffff;
+  background-color: #7349ac;
+}
+
+.importBtn:active {
+  background-color: #7349ac60;
+}
+
+.result {
+  background-color: #121212;
+}
+
+.downloadSample,
+.downloadSample:visited {
+  color: #ffffff;
+}

@@ -1,3 +1,14 @@
+let theme = 'Elmo';
+let failColor, passColor;
+
+if (theme === 'Halloween') {
+  failColor = '#ff5f5f';
+  passColor = '#ffffff';
+} else if (theme === 'Elmo') {
+  failColor = '#bb0000';
+  passColor = '#cc8888';
+}
+
 let scoreElements = {};
 let tillGradeElements = {};
 
@@ -118,6 +129,7 @@ function generateTable() {
 
   Object.entries(subjects.main).forEach((subject) => {
     let tr = createSubjectTr(subject);
+    tr.classList.add('mainBg');
     tbody.appendChild(tr);
   });
 
@@ -126,6 +138,7 @@ function generateTable() {
 
   Object.entries(subjects.additional).forEach((subject) => {
     let tr = createSubjectTr(subject);
+    tr.classList.add('addBg');
     tbody.appendChild(tr);
   });
 }
@@ -160,11 +173,13 @@ function createSubjectTr(subjectObject) {
   );
   tdPreMidFull.appendChild(tdPreMidFullText);
   tdPreMidFull.id = `preMidFull${subjectObject[1].subjectNo}`;
+  tdPreMidFull.classList.add('full');
 
   const tdMidFull = document.createElement('td');
   const tdMidFullText = document.createTextNode(subjectObject[1].fullScore[1]);
   tdMidFull.appendChild(tdMidFullText);
   tdMidFull.id = `midFull${subjectObject[1].subjectNo}`;
+  tdMidFull.classList.add('full');
 
   const tdPostMidFull = document.createElement('td');
   const tdPostMidFullText = document.createTextNode(
@@ -173,6 +188,7 @@ function createSubjectTr(subjectObject) {
 
   tdPostMidFull.appendChild(tdPostMidFullText);
   tdPostMidFull.id = `postMidFull${subjectObject[1].subjectNo}`;
+  tdPostMidFull.classList.add('full');
 
   const tdPreMidResult = document.createElement('td');
   tdPreMidResult.id = `preMidResult${subjectObject[1].subjectNo}`;
@@ -188,6 +204,7 @@ function createSubjectTr(subjectObject) {
 
   const tdTillGrade = document.createElement('td');
   tdTillGrade.id = `tillGrade${subjectObject[1].subjectNo}`;
+  tdTillGrade.classList.add('grade');
 
   tr.appendChild(tdSubjName);
   tr.appendChild(tdCredit);
@@ -213,7 +230,14 @@ function createSubjectHeader(text) {
   const tdText = document.createTextNode(text);
 
   td.setAttribute('colspan', '9');
+
   td.classList.add('subjNameHeader');
+
+  if (text === 'Main Subjects') {
+    td.classList.add('mainS');
+  } else if (text === 'Additional Subjects') {
+    td.classList.add('addS');
+  }
 
   td.appendChild(tdText);
   tr.appendChild(td);
@@ -230,7 +254,7 @@ function calculateTillGrade() {
       !scoreElements[`midResult${elementNum}`].textContent &&
       !scoreElements[`postMidResult${elementNum}`].textContent
     )
-      return console.log('a');
+      return;
 
     let resultTotal =
       Number(scoreElements[`preMidResult${elementNum}`].textContent) +
@@ -261,9 +285,16 @@ function updateColor() {
         ) *
           0.6
       ) {
-        element[1].style.color = '#bb0000';
+        // element[1].style.color = '#bb0000';
+        // element[1].style.color = '#eb6123';
+        element[1].style.color = '#ff2f2f';
+        element[1].style.color = failColor;
       } else {
-        element[1].style.color = '#cc8888';
+        // element[1].style.color = '#cc8888';
+        // element[1].style.color = '#a389ff';
+        // element[1].style.color = '#6fb848';
+        element[1].style.color = '#ffffff';
+        element[1].style.color = passColor;
       }
     }
   });

@@ -4,10 +4,6 @@
   font-family: 'Nunito', sans-serif;
 }
 
-body {
-  background-color: #ffcccc65;
-}
-
 table {
   margin-top: 50px;
   margin-left: auto;
@@ -17,8 +13,6 @@ table {
 table,
 th,
 td {
-  background-color: #ffffff60;
-  border: 2px solid #222222;
   border-collapse: collapse;
 }
 
@@ -37,7 +31,6 @@ td:not(.header, .subjNameHeader) {
 }
 
 .subjNameHeader {
-  background-color: #ffbbbb50;
   text-align: left;
   margin-left: 200px;
   font-weight: 800;
@@ -51,15 +44,10 @@ td:not(.header, .subjNameHeader) {
 
 .importBtn {
   display: block;
-  background-color: #ffcccc95;
   margin: 0 auto;
   border: none;
   border-radius: 5px;
   padding: 10px 15px;
-}
-
-.importBtn:active {
-  background-color: #ffcccc60;
 }
 
 .importInput {
@@ -76,8 +64,7 @@ td:not(.header, .subjNameHeader) {
 }
 
 .result {
-  background-color: #ffffff;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .downloadSample,
